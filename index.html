@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hiking and 4WD camping checklists (Copy)</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Barlow+Condensed:wght@600;700&family=DM+Sans:wght@400;500&family=Bowlby+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e8eee9;--card:#f6f9f6;--ink:#1d2b25;--mute:#6b7c73;--line:#cfd9d2;--pine:#2c5b47;--ice:#5d8ca1;--hi:#dbe7df;--hf:"Fraunces",Georgia,serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121b17;--card:#1a2620;--ink:#e3ece6;--mute:#8fa399;--line:#2c3b33;--pine:#7fc2a0;--ice:#8fbfd3;--hi:#233229}}
+:root[data-theme="dark"]{--bg:#121b17;--card:#1a2620;--ink:#e3ece6;--mute:#8fa399;--line:#2c3b33;--pine:#7fc2a0;--ice:#8fbfd3;--hi:#233229}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "DM Sans",system-ui,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:28px 18px 60px}
+header{position:relative;padding-bottom:8px}
+h1{font:700 clamp(2.2rem,6vw,3.6rem)/1 var(--hf);letter-spacing:-.02em;margin:0 0 6px}
+.sub{color:var(--mute);margin:0 0 18px}
+.ridge{display:block;width:100%;height:70px;margin:6px 0 0}
+.trail{position:relative;height:6px;border-radius:6px;background:var(--line);margin:0 0 8px}
+.trail i{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:var(--pine);width:0;transition:width .4s}
+.meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;color:var(--mute);font-size:.9rem;margin-bottom:22px}
+.tools button{margin-left:6px}
+button{font:inherit;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:10px;padding:6px 12px;cursor:pointer}
+button:hover{background:var(--hi)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--ice);outline-offset:2px}
+.tabs{display:flex;gap:8px;margin-bottom:18px}.tab{border-radius:999px;padding:7px 16px}.tab[aria-selected=true]{background:var(--pine);border-color:var(--pine);color:var(--card)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;align-items:start}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.title{flex:1;min-width:0;font:700 1.25rem/1.2 var(--hf);background:none;border:0;color:var(--ink);padding:2px 0}
+.count{color:var(--mute);font-size:.85rem;white-space:nowrap}
+.x{border:0;padding:2px 8px;color:var(--mute);border-radius:8px;line-height:1.2}
+.x:hover{color:#b3472f}
+.row{display:flex;align-items:center;gap:10px;padding:5px 0;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0}
+.row input[type=checkbox]{appearance:none;flex:none;width:20px;height:20px;border:1.5px solid var(--mute);border-radius:6px;margin:0;cursor:pointer;display:grid;place-content:center;background:transparent}
+.row input[type=checkbox]:checked{background:var(--pine);border-color:var(--pine)}
+.row input[type=checkbox]:checked::after{content:"";width:5px;height:10px;border:solid var(--card);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.t{flex:1;min-width:0;background:none;border:0;color:var(--ink);font:inherit;padding:3px 0;text-overflow:ellipsis}
+.row.done .t{color:var(--mute);text-decoration:line-through}
+.add{width:100%;margin-top:8px;border-style:dashed;color:var(--mute);text-align:left}
+.addsec{margin-top:16px;border-style:dashed;padding:12px 16px;width:100%}
+.rig,.dunes{display:none}
+.hiker{position:absolute;bottom:1px;left:0;width:22px;height:41px;color:var(--pine);transition:left .4s}
+.trail{margin-top:46px}
+:root[data-list="camp"] .hiker{display:none}
+.rig{position:absolute;bottom:1px;left:0;width:54px;height:25px;color:var(--pine);transition:left .4s}
+.tab svg{width:26px;height:12px;vertical-align:-1px;margin-right:6px;color:var(--pine)}
+.tab[aria-selected=true] svg{color:var(--card)}
+:root[data-list="camp"]{--bg:#e3d6c3;--card:#f2ebdf;--ink:#2b2018;--mute:#7a6a58;--line:#d0c0a8;--pine:#a4471f;--ice:#c8892a;--hi:#ead9c0;--hf:"Barlow Condensed","Arial Narrow",sans-serif}
+@media (prefers-color-scheme:dark){:root[data-list="camp"]:not([data-theme="light"]){--bg:#1c1713;--card:#271f19;--ink:#efe4d4;--mute:#a69783;--line:#3d3228;--pine:#e0804a;--ice:#e2a64a;--hi:#33281f}}
+:root[data-theme="dark"][data-list="camp"]{--bg:#1c1713;--card:#271f19;--ink:#efe4d4;--mute:#a69783;--line:#3d3228;--pine:#e0804a;--ice:#e2a64a;--hi:#33281f}
+:root[data-list="camp"] h1{font-size:clamp(2.6rem,7vw,4.2rem)}
+:root[data-list="camp"] .title{font-size:1.5rem}
+:root[data-list="camp"] .ridge{display:none}
+:root[data-list="camp"] .dunes{display:block;width:100%;height:70px;margin-top:6px}
+:root[data-list="camp"] .rig{display:block}
+:root[data-list="camp"] .trail{margin-top:30px}
+
+.ico{font-size:1.3rem;line-height:1;flex:none}
+section{transition:transform .2s,box-shadow .2s}
+section:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.12)}
+section.complete{border-color:var(--pine);background:linear-gradient(var(--hi),var(--card))}
+section.complete .count{color:var(--pine);font-weight:700}
+.row input[type=checkbox]:checked{animation:pop .25s}
+@keyframes pop{50%{transform:scale(1.4) rotate(-8deg)}}
+.tab{transition:transform .15s}.tab:hover{transform:rotate(-2deg) scale(1.06)}.tab[aria-selected=true]{transform:rotate(-2deg)}
+.hiker,.rig{animation:bob .7s ease-in-out infinite alternate}
+@keyframes bob{to{margin-bottom:3px}}
+#stat{font-weight:500}
+.conf span{position:fixed;top:-20px;width:10px;height:14px;border-radius:2px;animation:fall 1.4s ease-in forwards;pointer-events:none;z-index:9}
+@keyframes fall{to{transform:translate(var(--dx),105vh) rotate(var(--r))}}
+@media (prefers-reduced-motion:reduce){.conf{display:none}section,.tab,.row input,.hiker,.rig{animation:none!important;transition:none!important}}
+#aid{--bg:#e3eedf;--card:#fbfdf7;--ink:#1c2b22;--mute:#566a5c;--line:#b7cbb7;--acc:#2a6b49;--hot:#ff6a1a;--warn:#c98a00;--bad:#d6382b;--ok:#2a8a4c;--line2:#1c2b22;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #aid{--bg:#0f1a14;--card:#182a20;--ink:#e6f1e8;--mute:#9bb3a2;--line:#2d4637;--acc:#5fd09b;--hot:#ff8a45;--warn:#f0b73a;--bad:#ff7d70;--ok:#6fdc97;--line2:#e6f1e8}}
+:root[data-theme="dark"] #aid{--bg:#0f1a14;--card:#182a20;--ink:#e6f1e8;--mute:#9bb3a2;--line:#2d4637;--acc:#5fd09b;--hot:#ff8a45;--warn:#f0b73a;--bad:#ff7d70;--ok:#6fdc97;--line2:#e6f1e8}
+#aid *{box-sizing:border-box}
+#aid{margin:0;background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320' fill='none' stroke='%23000' stroke-opacity='.07' stroke-width='1.5'%3E%3Cpath d='M-10 80C60 30 120 120 200 70S300 40 340 90'/%3E%3Cpath d='M-10 110C60 62 120 150 200 102S300 74 340 122'/%3E%3Cpath d='M-10 140C60 94 120 180 200 134S300 108 340 154'/%3E%3Cpath d='M-10 240C70 190 130 280 210 230S300 200 340 250'/%3E%3Cpath d='M-10 270C70 222 130 310 210 262S300 234 340 282'/%3E%3C/svg%3E");color:var(--ink);font:16px/1.4 Nunito,system-ui,sans-serif}
+#aid .hero{display:flex;gap:14px;align-items:center;margin-bottom:12px}
+#aid .patch{flex:none;width:76px;height:76px;border-radius:50%;background:var(--hot);border:4px solid var(--card);outline:3px dashed var(--ink);outline-offset:-1px;display:grid;place-items:center;font-size:2.1rem;transform:rotate(-8deg);box-shadow:0 3px 0 var(--line2)}
+#aid h1{font:1.7rem/1.05 "Bowlby One",Impact,sans-serif;margin:0;letter-spacing:.5px}
+#aid .asub{color:var(--mute);margin:4px 0 0;font-size:.92rem}
+#aid .meter{background:var(--card);border:3px solid var(--line2);border-radius:14px;padding:12px 14px;margin:10px 0 8px;box-shadow:0 4px 0 var(--line2)}
+#aid .meter b{font-family:"Bowlby One",Impact,sans-serif;font-weight:400}
+#aid .track{position:relative;height:16px;border-radius:99px;background:var(--line);margin:10px 0 6px;border:2px solid var(--line2)}
+#aid .fill{height:100%;border-radius:99px;background:repeating-linear-gradient(-45deg,var(--ok) 0 10px,var(--acc) 10px 20px);transition:width .5s}
+#aid .boot{position:absolute;top:-14px;font-size:1.3rem;transform:translateX(-50%);transition:left .5s}
+#aid .msg{font-size:.9rem;color:var(--mute)}
+#aid .sum{display:flex;gap:8px;flex-wrap:wrap;font-size:.85rem;font-weight:700;margin-bottom:6px}
+#aid .sum span{padding:4px 11px;border-radius:99px;border:2px solid var(--line2);background:var(--card)}
+#aid h2{display:inline-block;font:1rem/1 "Bowlby One",Impact,sans-serif;margin:28px 0 10px;padding:9px 16px 9px 12px;background:var(--acc);color:var(--card);border:3px solid var(--line2);border-radius:8px 22px 22px 8px;box-shadow:0 3px 0 var(--line2);transform:rotate(-1deg)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #aid h2{color:#0f1a14}}
+#aid .item{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:10px 12px;margin:9px 0;position:relative;transition:transform .15s}
+#aid .item.ok{border-color:var(--ok)}
+#aid .item.soon{border-color:var(--warn)}
+#aid .item.exp,#aid .item.low{border-color:var(--bad)}
+#aid .name{font-weight:800;margin-bottom:8px;padding-right:4px}
+#aid .arow{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+#aid label{display:flex;flex-direction:column;font-size:.75rem;color:var(--mute);gap:3px;font-weight:700}
+#aid select,#aid input{font:inherit;font-size:1rem;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:10px;padding:7px 8px;min-height:42px}
+#aid input:focus-visible,#aid select:focus-visible,#aid button:focus-visible{outline:3px solid var(--hot);outline-offset:1px}
+#aid input[type=number]{width:76px}
+#aid #nname{width:230px;max-width:100%}
+#aid .need{align-self:center;font-size:.85rem;color:var(--mute);font-weight:700}
+#aid .badge{margin-left:auto;font-size:.78rem;font-weight:800;align-self:center;padding:4px 10px;border-radius:99px;border:2px solid currentColor;transform:rotate(-3deg);background:var(--card)}
+#aid .badge:empty{display:none}
+#aid .ok .badge{color:var(--ok)}
+#aid .soon .badge{color:var(--warn)}
+#aid .exp .badge,#aid .low .badge{color:var(--bad)}
+#aid .na{display:flex;align-items:center;gap:6px;flex-direction:row;font-size:.8rem}
+#aid .na input{min-height:0;width:18px;height:18px;accent-color:var(--acc)}
+#aid .abar{display:flex;gap:8px;margin:18px 0;flex-wrap:wrap}
+#aid button{font:inherit;font-weight:800;font-size:.9rem;padding:9px 15px;border-radius:12px;border:2px solid var(--line2);background:var(--hot);color:#1c2b22;cursor:pointer;box-shadow:0 3px 0 var(--line2);transition:transform .08s,box-shadow .08s}
+#aid button:active{transform:translateY(3px);box-shadow:none}
+#aid .sech{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:8px}
+#aid .sech h2{margin-right:6px}
+#aid .mini{font-size:.78rem;padding:5px 10px;box-shadow:0 2px 0 var(--line2)}
+#aid .acts{margin-top:8px}
+#aid .sech h2.alert{background:var(--bad)}
+#aid .from{font-weight:600;font-size:.8rem;color:var(--mute)}
+#aid .editing{border-color:var(--hot)}
+#aid button.alt{background:var(--card);color:var(--ink)}
+@media (prefers-reduced-motion:reduce){#aid *{transition:none!important}}
+@media print{#aid{background:#fff}
+#aid .abar,#aid #add,#aid .meter{display:none}}
+#aid{max-width:720px;margin:0 auto;padding:18px 14px 48px;border-radius:18px}
+#aid{display:none}
+:root[data-list="aid"] #aid{display:block}
+:root[data-list="aid"] header>h1,:root[data-list="aid"] header>.sub,:root[data-list="aid"] .ridge,:root[data-list="aid"] .dunes,:root[data-list="aid"] .trail,:root[data-list="aid"] .meta,:root[data-list="aid"] #grid,:root[data-list="aid"] #addsec{display:none}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="troopy" viewBox="0 0 120 56"><g fill="currentColor"><path d="M6 42V16Q6 12 10 12H82L96 25H112Q117 25 117 30V42Z"/><rect x="12" y="6" width="66" height="2.5" rx="1"/><rect x="18" y="8" width="2" height="4"/><rect x="70" y="8" width="2" height="4"/><rect x="95" y="6" width="3" height="19" rx="1"/><rect x="92" y="4" width="8" height="3" rx="1"/></g><g fill="var(--bg)"><rect x="11" y="16" width="27" height="9" rx="1"/><rect x="42" y="16" width="27" height="9" rx="1"/><path d="M73 16H80L89 25H73Z"/><rect x="111" y="30" width="5" height="4" rx="1"/><circle cx="30" cy="42" r="11"/><circle cx="90" cy="42" r="11"/></g><g fill="currentColor"><circle cx="30" cy="42" r="8.5"/><circle cx="90" cy="42" r="8.5"/></g><g fill="var(--bg)"><circle cx="30" cy="42" r="3"/><circle cx="90" cy="42" r="3"/></g></symbol></svg>
+<main>
+<header>
+<nav class="tabs"><button class="tab" data-l="hike" aria-selected="true">🥾 Hiking</button><button class="tab" data-l="camp" aria-selected="false"><svg aria-hidden="true"><use href="#troopy"/></svg>4WD camping</button><button class="tab" data-l="aid" aria-selected="false">🩹 First aid</button></nav>
+<h1>Hiking checklist</h1>
+<p class="sub">Tick things off, rename anything, add your own. Changes save in this browser.</p>
+<svg class="ridge" viewBox="0 0 800 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 62 L90 28 L150 48 L250 10 L330 44 L420 22 L520 56 L610 18 L700 46 L800 30 L800 70 L0 70Z" fill="var(--pine)" opacity=".16"/><path d="M0 62 L90 28 L150 48 L250 10 L330 44 L420 22 L520 56 L610 18 L700 46 L800 30" fill="none" stroke="var(--pine)" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+<svg class="dunes" viewBox="0 0 800 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60C80 20 160 20 250 48C340 74 400 10 500 22C590 32 650 62 720 44C760 34 790 30 800 32V70H0Z" fill="var(--ice)" opacity=".2"/><path d="M0 60C80 20 160 20 250 48C340 74 400 10 500 22C590 32 650 62 720 44C760 34 790 30 800 32" fill="none" stroke="var(--ice)" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+</header>
+<div class="trail"><i id="bar"></i><svg class="hiker" id="hk" viewBox="0 0 30 56" aria-hidden="true"><g fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="17" cy="8" r="5" stroke="none"/><rect x="4" y="14" width="9" height="17" rx="3" stroke="none"/><path d="M16 15L15 34M15 34L22 46L23 54M15 34L9 46L6 54M16 19L23 28M24 24L27 54" fill="none" stroke-width="3.5"/></g></svg><svg class="rig" id="rig" viewBox="0 0 120 56" aria-hidden="true"><use href="#troopy"/></svg></div>
+<div class="meta"><span id="stat"></span><span class="tools"><button id="uncheck">Uncheck all</button><button id="reset">Restore defaults</button></span></div>
+<div class="grid" id="grid"></div>
+<button class="addsec" id="addsec">Add a section</button>
+</main>
+<div id="aid">
+<div class="hero"><div class="patch" aria-hidden="true">⛺</div><div><h1>Trail Kit Check</h1><p class="asub">Log what's in your pack and when it expires. Saved in this browser.</p></div></div>
+<div class="meter"><b id="pct">0%</b> <span class="msg" id="msg"></span><div class="track"><div class="fill" id="fill" style="width:0"></div><span class="boot" id="boot" style="left:0" aria-hidden="true">🥾</span></div></div>
+<div class="sum" id="sum"></div>
+<div id="list"></div>
+<h2>🎒 Add gear to the pack</h2>
+<form id="add" class="item"><div class="row">
+<label>Item name<input id="nname" type="text" required placeholder="e.g. Ibuprofen, 200 mg"></label>
+<label>Target quantity<input id="nqty" type="number" min="1" value="1" inputmode="numeric"></label>
+<label>Section<select id="ncat"></select></label>
+<label>Or new section<input id="nnew" type="text" placeholder="optional"></label>
+<button type="submit">Add to pack</button></div></form>
+<div class="abar"><button class="alt" id="print">Print checklist</button><button class="alt" id="areset">Reset the trail</button><button class="alt" id="restore">Restore starter kit</button></div>
+</main>
+</div>
+<script>
+var LISTS={hike:{key:"hiking-checklist-v1",title:"Hiking checklist"},camp:{key:"4wd-camping-checklist-v1",title:"4WD camping checklist"}};var cur="hike";var KEY=LISTS[cur].key;
+var DEFAULTS_HIKE=[
+["Ten essentials",["Map, compass or GPS with offline maps","Headlamp and spare batteries","Sunscreen, sunglasses, hat","First aid kit","Knife or multi-tool","Lighter or waterproof matches","Space blanket or bivvy","Extra food","Extra water","Extra clothing layer"]],
+["Clothing",["Moisture-wicking base layer","Insulating mid layer","Waterproof, windproof jacket","Hiking pants or shorts","Hiking socks and a spare pair","Sun hat or beanie","Gloves"]],
+["Footwear",["Broken-in boots or trail shoes","Gaiters","Camp shoes (overnight)"]],
+["Food and water",["Water bottles or bladder","Filter or purification tablets","Trail snacks","Lunch or main meal","Electrolyte mix","Rubbish bag"]],
+["Safety",["Blister treatment","Bandages and antiseptic wipes","Pain relief and personal medication","Insect repellent","Whistle","Locator beacon (remote areas)","Emergency contact info"]],
+["Gear",["Backpack with rain cover","Trekking poles","Power bank and cable","Camera","Small towel or bandana"]],
+["Overnight extras",["Tent, tarp or hammock","Sleeping bag and mat","Stove, fuel and pot","Cutlery and mug","Toiletries and trowel","Extra day of food"]],
+["Before you leave",["Check weather forecast","Check trail conditions and fire bans","Tell someone your route and return time","Download offline maps","Park pass or permit"]]];
+var DEFAULTS_CAMP=[
+["Recovery gear",["Recovery tracks","Snatch strap or kinetic rope","Rated recovery points and bow shackles","Shovel","Tyre deflator and gauge","Air compressor","Tyre repair kit and plugs","Work gloves","Tree trunk protector","Winch (if fitted)"]],
+["Vehicle and spares",["Full-size spare tyre","Jack, base plate and wheel brace","Spare fuel can","Engine oil and coolant","Jump starter or jumper leads","Fuses, belts and hoses","Basic tool kit","Cable ties and duct tape","Service and tyre check before the trip"]],
+["Navigation and comms",["Offline maps downloaded","Paper map","UHF radio","Satellite messenger or locator beacon","12V phone charger","Fuel range plan"]],
+["Camp setup",["Tent, swag or rooftop tent","Sleeping bags and mats","Chairs and table","Awning or tarp","Camp lights and headlamps","Pegs and mallet","Ground sheet"]],
+["Kitchen",["Stove and gas","Fridge or cooler","Pots, pans and cutlery","Plates and mugs","Dish washing kit","Food for every day, plus spare","Firewood (where permitted)","Rubbish bags"]],
+["Water and power",["Drinking water, with a generous spare","Water jerry cans","Water filter or tablets","Dual battery, solar or power bank","12V cables and adaptors"]],
+["Safety",["First aid kit","Snake bandages","Fire extinguisher","Fire blanket","Sunscreen and insect repellent","Whistle","Emergency contact info"]],
+["Before you leave",["Check road conditions and closures","Check fire bans","Park passes and permits","Check weather forecast","Tell someone your route and return time","Fill up on fuel","Set tyre pressures"]]];
+function defs(){return cur==="hike"?DEFAULTS_HIKE:DEFAULTS_CAMP}
+var uid=0;function id(){return "i"+Date.now().toString(36)+(uid++)}
+function fresh(){return defs().map(function(s){return{id:id(),title:s[0],items:s[1].map(function(t){return{id:id(),t:t,d:false}})}})}
+var ICONS=[[/essential/i,"🧭"],[/clothing/i,"🧥"],[/footwear/i,"🥾"],[/food|water and power/i,"💧"],[/recovery/i,"🪢"],[/vehicle/i,"🔧"],[/navig/i,"📡"],[/camp setup/i,"⛺"],[/kitchen/i,"🍳"],[/safety/i,"⛑️"],[/gear/i,"🎒"],[/overnight/i,"🏕️"],[/before/i,"✅"]];
+function icon(t){for(var k=0;k<ICONS.length;k++)if(ICONS[k][0].test(t))return ICONS[k][1];return "📍"}
+var MSG={hike:["Basecamp. Tick something off!","Boots are laced.","Climbing steadily.","Nearly at the summit!","Summit reached. Go hike! 🏔️"],camp:["Engine's cold. Start packing.","Loading the rig.","Tyres down, spirits up.","Nearly ready to roll.","Fully loaded. Hit the dirt! 🚙"]};
+function allDone(){return data.length>0&&data.every(function(s){return s.items.every(function(i){return i.d})})}
+function burst(n){if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;var w=document.createElement("div");w.className="conf";var c=["#e0804a","#7fc2a0","#e2a64a","#8fbfd3","#d9534f"];for(var k=0;k<n;k++){var s=document.createElement("span");s.style.left=Math.random()*100+"vw";s.style.background=c[k%5];s.style.setProperty("--dx",(Math.random()*160-80)+"px");s.style.setProperty("--r",Math.random()*720+"deg");s.style.animationDelay=Math.random()*.3+"s";w.appendChild(s)}document.body.appendChild(w);setTimeout(function(){w.remove()},2200)}
+var data;
+function loadList(){KEY=LISTS[cur].key;data=null;try{var raw=localStorage.getItem(KEY);data=raw?JSON.parse(raw):null}catch(e){data=null}
+if(!Array.isArray(data))data=fresh();
+document.querySelector("h1").textContent=LISTS[cur].title;document.documentElement.dataset.list=cur;
+document.querySelectorAll(".tab").forEach(function(b){b.setAttribute("aria-selected",String(b.dataset.l===cur))})}
+loadList();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){}}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}
+function stats(){var n=0,d=0;data.forEach(function(s){s.items.forEach(function(i){n++;if(i.d)d++})});
+var p=n?d/n:0,mi=p===0?0:p<.35?1:p<.65?2:p<1?3:4;document.getElementById("stat").textContent=d+" of "+n+" packed · "+MSG[cur][mi];
+document.getElementById("bar").style.width=(n?d/n*100:0)+"%";document.getElementById("hk").style.left="calc((100% - 22px) * "+(n?d/n:0)+")";document.getElementById("rig").style.left="calc((100% - 54px) * "+(n?d/n:0)+")";
+document.querySelectorAll("section").forEach(function(el){var s=data.find(function(x){return x.id===el.dataset.s});
+if(s){var dn=s.items.filter(function(i){return i.d}).length,full=s.items.length>0&&dn===s.items.length;el.classList.toggle("complete",full);el.querySelector(".count").textContent=(full?"✓ ":"")+dn+"/"+s.items.length}})}
+function render(){
+document.getElementById("grid").innerHTML=data.map(function(s){
+return '<section data-s="'+s.id+'"><div class="head"><span class="ico" aria-hidden="true">'+icon(s.title)+'</span><input class="title" aria-label="Section name" value="'+esc(s.title)+'"><span class="count"></span><button class="x" data-a="delsec" aria-label="Delete section">&times;</button></div>'+
+s.items.map(function(i){return '<div class="row'+(i.d?' done':'')+'" data-i="'+i.id+'"><input type="checkbox" aria-label="Packed"'+(i.d?' checked':'')+'><input class="t" aria-label="Item" value="'+esc(i.t)+'"><button class="x" data-a="del" aria-label="Delete item">&times;</button></div>'}).join("")+
+'<button class="add" data-a="add">Add an item</button></section>'}).join("");
+stats()}
+function find(el){var sec=el.closest("section");if(!sec)return{};var s=data.find(function(x){return x.id===sec.dataset.s});var r=el.closest(".row");
+return{sec:s,item:r&&s?s.items.find(function(i){return i.id===r.dataset.i}):null,row:r}}
+var grid=document.getElementById("grid");
+grid.addEventListener("change",function(e){if(e.target.type!=="checkbox")return;var f=find(e.target);if(!f.item)return;
+var was=f.sec.items.every(function(i){return i.d}),wasAll=allDone();f.item.d=e.target.checked;f.row.classList.toggle("done",f.item.d);save();stats();
+if(!was&&f.sec.items.every(function(i){return i.d}))burst(30);if(!wasAll&&allDone())burst(140)});
+grid.addEventListener("input",function(e){var f=find(e.target);if(e.target.classList.contains("title")&&f.sec)f.sec.title=e.target.value;
+else if(e.target.classList.contains("t")&&f.item)f.item.t=e.target.value;save()});
+grid.addEventListener("keydown",function(e){if(e.key==="Enter"&&e.target.classList.contains("t")){var f=find(e.target);var i={id:id(),t:"",d:false};
+f.sec.items.splice(f.sec.items.indexOf(f.item)+1,0,i);save();render();focusItem(i.id)}});
+function focusItem(iid){var r=document.querySelector('[data-i="'+iid+'"] .t');if(r)r.focus()}
+grid.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var f=find(b),a=b.dataset.a;
+if(a==="del"){f.sec.items=f.sec.items.filter(function(i){return i!==f.item})}
+else if(a==="add"){var n={id:id(),t:"",d:false};f.sec.items.push(n);save();render();focusItem(n.id);return}
+else if(a==="delsec"){if(f.sec.items.length&&!confirm("Delete this section and its items?"))return;data=data.filter(function(s){return s!==f.sec})}
+else return;save();render()});
+document.getElementById("addsec").onclick=function(){data.push({id:id(),title:"New section",items:[]});save();render();
+var t=document.querySelectorAll(".title");var l=t[t.length-1];l.focus();l.select()};
+document.getElementById("uncheck").onclick=function(){data.forEach(function(s){s.items.forEach(function(i){i.d=false})});save();render()};
+document.getElementById("reset").onclick=function(){if(confirm("Replace everything with the original list?")){data=fresh();save();render()}};
+document.querySelectorAll(".tab").forEach(function(b){b.onclick=function(){cur=b.dataset.l;if(cur==="aid"){document.documentElement.dataset.list="aid";document.querySelectorAll(".tab").forEach(function(x){x.setAttribute("aria-selected",String(x===b))});return}loadList();render()}});
+render();
+</script>
+<script>
+(function(){
+const KIT={
+"Wound care / burn / blister":[[1,"Wilderness First Aid Manual"],[1,"Wound Irrigation Tool"],[1,"Elastic Bandage, 5 cm"],[4,"Sterile Gauze Dressing, 10 cm x 10 cm"],[4,"Sterile Gauze Dressing, 5 cm x 5 cm"],[2,"Non-Adherent Sterile Dressing, 5 cm x 7.5 cm"],[1,"Gauze Bandage, 5 cm"],[2,"Cotton Tip Applicator"],[1,"Tape, 2.5 cm x 9 m"],[14,"Moleskin, Pre-Cut & Shaped"]],
+"Instruments":[[1,"EMT Shears"],[1,"Splinter/Tick Remover Forceps"],[3,"Safety Pin"]],
+"Cuts & scrapes":[[5,"Easy Access Bandages™, Fabric, 2.5 cm x 7.5 cm"],[5,"Easy Access Bandages™, Fabric, Knuckle"],[4,"Butterfly Wound Closure"],[1,"Skin Tac™ Topical Adhesive Wipe"]],
+"Stop bleeding fast":[[1,"Trauma Pad, 12.7 cm x 22.8 cm"],[2,"Nitrile Glove"]]};
+const ICON={"Wound care / burn / blister":"🩹","Instruments":"✂️","Cuts & scrapes":"🌿","Stop bleeding fast":"🚨"};
+const KEY="firstaid-kit-v1",SKEY="firstaid-struct-v1",CKEY="firstaid-custom-v1";
+let data={},st=null,editing=null;
+try{data=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){data={}}
+function seed(){
+  const cats=[],items=[];
+  for(const [c,arr] of Object.entries(KIT)){cats.push(c);arr.forEach(([need,name],i)=>items.push({id:c+i,cat:c,name,need}));}
+  try{JSON.parse(localStorage.getItem(CKEY)||"[]").forEach(c=>{if(!cats.includes(c.cat))cats.push(c.cat);items.push({id:c.id,cat:c.cat,name:c.name,need:c.need})})}catch(e){}
+  return {cats,items};
+}
+try{st=JSON.parse(localStorage.getItem(SKEY))}catch(e){st=null}
+if(!st||!st.items||!st.cats)st=seed();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){}}
+function saveS(){try{localStorage.setItem(SKEY,JSON.stringify(st))}catch(e){}}
+function status(id,need){
+  const d=data[id]||{};const q=d.q===undefined||d.q===""?null:+d.q;
+  if(q!==null&&q<need)return["low","Restock! Need "+need];
+  if(d.na||!d.e)return[q===null?"":"ok",q===null?"":"Trail ready ✓"];
+  const days=Math.floor((new Date(d.e+"T00:00:00")-new Date().setHours(0,0,0,0))/864e5);
+  if(days<0)return["exp","Expired: toss it"];
+  if(days<=90)return["soon","Use soon: "+days+" d left"];
+  return["ok","Trail ready ✓"];
+}
+function mk(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e}
+function mini(txt,label,fn){const b=mk("button","alt mini",txt);b.type="button";b.title=label;b.setAttribute("aria-label",label);b.onclick=fn;return b}
+function isFlag(i){const c=status(i.id,i.need)[0];return c==="low"||c==="exp"}
+function lbl(it,cls,txt){
+  if(cls==="low"){const q=+((data[it.id]||{}).q);return "Add "+Math.max(1,it.need-q)+" more"}
+  if(cls==="exp")return "Replace: expired";return txt}
+function render(){
+  const list=document.getElementById("list");list.innerHTML="";
+  const flagged=st.items.filter(isFlag);
+  if(flagged.length){
+    const head=mk("div","sech");head.appendChild(mk("h2","alert","🛒 To add or replace ("+flagged.length+")"));
+    list.appendChild(head);
+    flagged.forEach(it=>list.appendChild(editing===it.id?editCard(it):card(it,true)));
+  }
+  st.cats.forEach(cat=>{
+    const head=mk("div","sech");head.appendChild(mk("h2","",(ICON[cat]||"🧭")+" "+cat));
+    head.appendChild(mini("✏️ Rename","Rename section "+cat,()=>{
+      const n=(prompt("Rename section",cat)||"").trim();
+      if(!n||n===cat)return;if(st.cats.includes(n)){alert("A section with that name already exists.");return}
+      st.cats=st.cats.map(c=>c===cat?n:c);st.items.forEach(i=>{if(i.cat===cat)i.cat=n});saveS();render();}));
+    head.appendChild(mini("🗑 Delete","Delete section "+cat,()=>{
+      const n=st.items.filter(i=>i.cat===cat).length;
+      if(!confirm("Delete \""+cat+"\" and its "+n+" item(s)?"))return;
+      st.items.filter(i=>i.cat===cat).forEach(i=>delete data[i.id]);
+      st.items=st.items.filter(i=>i.cat!==cat);st.cats=st.cats.filter(c=>c!==cat);saveS();save();render();}));
+    list.appendChild(head);
+    const all=st.items.filter(i=>i.cat===cat),its=all.filter(i=>!isFlag(i));
+    if(!all.length)list.appendChild(mk("p","asub","Nothing here yet. Add gear below."));
+    else if(!its.length)list.appendChild(mk("p","asub","Everything here is on the restock list above."));
+    its.forEach(it=>list.appendChild(editing===it.id?editCard(it):card(it)));
+  });
+  const sel=document.getElementById("ncat");sel.innerHTML="";
+  st.cats.forEach(c=>{const o=mk("option","",c);o.value=c;sel.appendChild(o)});
+  summ();
+}
+function card(it,flagged){
+  const {id,name,need}=it,d=data[id]||{};
+  const div=mk("div","item");
+  div.innerHTML=`<div class="name"></div><div class="arow">
+  <label>Quantity on hand<input type="number" min="0" inputmode="numeric"></label>
+  <span class="need">of ${need}</span>
+  <label>Expiry date<input type="date"></label>
+  <label class="na"><input type="checkbox">No expiry</label>
+  <span class="badge"></span></div><div class="arow acts"></div>`;
+  div.querySelector(".name").textContent=name;
+  if(flagged)div.querySelector(".name").appendChild(mk("span","from"," · from "+it.cat));
+  const [q,e]=div.querySelectorAll('input[type=number],input[type=date]'),na=div.querySelector('[type=checkbox]');
+  q.value=d.q??"";e.value=d.e??"";na.checked=!!d.na;e.disabled=na.checked;
+  const upd=()=>{
+    data[id]={q:q.value,e:e.value,na:na.checked};e.disabled=na.checked;save();
+    const [cls,txt]=status(id,need);div.className="item "+cls;div.querySelector(".badge").textContent=lbl(it,cls,txt);summ();};
+  [q,e,na].forEach(x=>{x.addEventListener("input",upd);x.addEventListener("change",()=>{if(isFlag(it)!==!!flagged)render()})});
+  const acts=div.querySelector(".acts");
+  acts.appendChild(mini("✏️ Edit","Edit "+name,()=>{editing=id;render()}));
+  acts.appendChild(mini("🗑 Remove","Remove "+name,()=>{
+    if(!confirm("Remove "+name+"?"))return;
+    st.items=st.items.filter(i=>i.id!==id);delete data[id];saveS();save();render();}));
+  const [cls,txt]=status(id,need);div.className="item "+cls;div.querySelector(".badge").textContent=lbl(it,cls,txt);
+  return div;
+}
+function editCard(it){
+  const div=mk("form","item editing");
+  div.innerHTML=`<div class="arow"><label>Item name<input class="en" type="text" required></label>
+  <label>Target quantity<input class="eq" type="number" min="1" inputmode="numeric"></label>
+  <label>Section<select class="ec"></select></label></div><div class="arow acts"></div>`;
+  div.querySelector(".en").value=it.name;div.querySelector(".eq").value=it.need;
+  const sel=div.querySelector(".ec");st.cats.forEach(c=>{const o=mk("option","",c);o.value=c;sel.appendChild(o)});sel.value=it.cat;
+  const acts=div.querySelector(".acts");
+  const ok=mk("button","","Save changes");ok.type="submit";
+  const no=mini("Cancel","Cancel editing",()=>{editing=null;render()});
+  acts.append(ok,no);
+  div.onsubmit=ev=>{ev.preventDefault();
+    const n=div.querySelector(".en").value.trim();if(!n)return;
+    it.name=n;it.need=Math.max(1,parseInt(div.querySelector(".eq").value)||1);it.cat=sel.value;
+    editing=null;saveS();render();};
+  return div;
+}
+function summ(){
+  let low=0,exp=0,soon=0,ready=0;const a=st.items;
+  a.forEach(({id,need})=>{const d=data[id]||{},s=status(id,need)[0];
+    if(s==="low")low++;if(s==="exp")exp++;if(s==="soon")soon++;
+    if((s==="ok"||s==="soon")&&d.q!==undefined&&d.q!==""&&+d.q>=need)ready++;});
+  const pc=a.length?Math.round(ready/a.length*100):0;
+  document.getElementById("pct").textContent=pc+"% pack ready";
+  document.getElementById("fill").style.width=pc+"%";
+  document.getElementById("boot").style.left=Math.min(Math.max(pc,4),96)+"%";
+  document.getElementById("msg").textContent=!a.length?"The pack is empty. Add some gear.":pc===100?"Summit reached! Your kit is trail-ready 🏔️":pc>=60?"Nearly at the ridge. A few items to fix.":pc>0?"Good start. Keep logging to climb higher.":"Basecamp. Enter quantities and dates to begin.";
+  document.getElementById("sum").innerHTML=`<span>${a.length} items</span><span>${low} low</span><span>${exp} expired</span><span>${soon} expiring within 90 days</span>`;
+}
+document.getElementById("add").onsubmit=ev=>{
+  ev.preventDefault();
+  const n=document.getElementById("nname").value.trim(),q=Math.max(1,parseInt(document.getElementById("nqty").value)||1);
+  const nc=document.getElementById("nnew").value.trim();
+  if(!n)return;
+  let cat=document.getElementById("ncat").value;
+  if(nc){cat=nc;if(!st.cats.includes(nc))st.cats.push(nc)}
+  if(!cat)return;
+  st.items.push({id:"c"+Date.now(),cat,name:n,need:q});saveS();
+  document.getElementById("nname").value="";document.getElementById("nnew").value="";render();
+};
+document.getElementById("print").onclick=()=>window.print();
+document.getElementById("areset").onclick=()=>{if(confirm("Clear all quantities and dates? Your item list stays.")){data={};save();render();}};
+document.getElementById("restore").onclick=()=>{if(confirm("Restore the original starter kit? This replaces your item list and clears all entries.")){st=seed0();data={};saveS();save();render();}};
+function seed0(){const cats=[],items=[];for(const [c,arr] of Object.entries(KIT)){cats.push(c);arr.forEach(([need,name],i)=>items.push({id:c+i,cat:c,name,need}));}return {cats,items}}
+render();
+})();
+</script>
+</body>
+</html>
